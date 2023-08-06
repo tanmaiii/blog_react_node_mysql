@@ -1,0 +1,17 @@
+@use '../../scss/' as *;
+
+
+.home{
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    @include mobile{
+        padding: 20px 10px;
+    }
+}
+
+.home_list{
+    display: flex;
+    gap: 20px;
+}

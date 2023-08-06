@@ -1,0 +1,45 @@
+@use "../../scss/" as *;
+
+.footer {
+  @include themify($themes) {
+    width: 100%;
+    @include flex(center, center);
+    flex-direction: column;
+    background-color: themed("bg2");
+    min-height: 100px;
+    color: themed("text1");
+    padding: 40px 10px;
+    font-size: 16px;
+    @include tablet{
+      p,span,li{
+        font-size: 14px;
+      }
+    }
+    & > *{
+      margin-bottom: 10px;
+    }
+    p {
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      @include flex(center, center);
+      flex-wrap: wrap;
+      li {
+        margin-left: 10px;
+        @include flex(center, unset);
+        gap: 6px;
+        color: themed("primary");
+        .dot {
+          background-color: themed("primary");
+        }
+      }
+    }
+    span {
+      a {
+        color: themed("primary");
+        font-weight: 600;
+      }
+    }
+  }
+}

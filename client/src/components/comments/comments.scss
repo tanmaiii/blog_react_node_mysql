@@ -1,0 +1,154 @@
+@use "../../scss/" as *;
+
+.comments {
+  @include themify($themes) {
+    h4 {
+      color: themed("text1");
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      span {
+        margin-left: 8px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+    .comments_wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      .comments_write {
+        @include flex(center, unset);
+        background-color: themed("bg2");
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        img {
+          width: 36px;
+          height: 36px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+        .write_input {
+          width: 100%;
+          @include flex(center, unset);
+          input {
+            font-size: 16px;
+            color: themed("text1");
+            flex: 1;
+            padding: 0 10px;
+          }
+          button {
+            background-color: themed("primary");
+            color: $color-white;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            &:hover {
+              scale: 0.94;
+            }
+          }
+        }
+      }
+
+      .comments_comment {
+        @include flex(top, unset);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        img {
+          margin-right: 10px;
+          width: 36px;
+          height: 36px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+
+        .info {
+          .info_wrapper {
+            @include flex(center, unsetF);
+            &_content {
+              background-color: themed("bg2");
+              border-radius: 10px;
+              padding: 10px;
+              margin-right: 10px;
+              span {
+                color: themed("text1");
+                font-size: 16px;
+                font-weight: 600;
+              }
+              p {
+                color: themed("text1");
+                font-size: 16px;
+                font-weight: 400;
+                min-width: 200px;
+              }
+            }
+            .more {
+              opacity: 0;
+              position: relative;
+              .btn-more {
+                padding: 8px;
+                border-radius: 50%;
+                transition: all 0.3s;
+                margin: auto 0;
+                transition: all 0.3s;
+                @include flex(center, center);
+                i {
+                  width: 16px;
+                  height: 16px;
+                  font-size: 16px;
+                  line-height: 1;
+                  color: themed("text1");
+                }
+                &:hover {
+                  background-color: themed("bg2");
+                }
+              }
+              .more-body {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: themed("bg3");
+                border-radius: 10px;
+                display: none;
+                box-shadow: themed("bg1") 0px 8px 24px;
+                z-index: 2;
+                button {
+                  @include flex(center, unset);
+                  gap: 6px;
+                  color: themed("text1");
+                  transition: all 0.3s;
+                  padding: 10px;
+                  width: 100%;
+                  span {
+                    font-size: 16px;
+                  }
+                  &:hover {
+                    scale: 0.94;
+                  }
+                }
+              }
+              &:hover .more-body {
+                display: block;
+              }
+            }
+
+            &:hover .more {
+              opacity: 1;
+            }
+          }
+          .date {
+            @include flex(center, unset);
+            gap: 6px;
+            color: themed("text2");
+            font-size: 12px;
+            padding: 4px;
+            i {
+            }
+          }
+        }
+      }
+    }
+  }
+}

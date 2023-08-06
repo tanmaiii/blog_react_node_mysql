@@ -1,0 +1,67 @@
+@use "./variavles" as *;
+
+$themes: (
+  light: (
+    text1: $color-txt-l-1,
+    text2: $color-txt-l-2,
+    text3: $color-txt-l-3,
+    bg1: $color-w1,
+    bg2: $color-w2,
+    bg3: $color-w3,
+    primary: $color-primary,
+    border: #7a7a7a,
+  ),
+  dark: (
+    text1: $color-txt-d-1,
+    text2: $color-txt-d-2,
+    text3: $color-txt-d-3,
+    bg1: $color-b1,
+    bg2: $color-b2,
+    bg3: $color-b3,
+    primary: $color-primary,
+    border: #242424,
+  ),
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+@mixin flex($align-item, $justify-content) {
+  display: flex;
+  align-items: $align-item;
+  justify-content: $justify-content;
+}
+
+@mixin overlay {
+  background-color: rgba($color: #000000, $alpha: 0.6);
+}
+
+@mixin text($line){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,112 @@
+@use "../src/scss/" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Lilita+One&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+.content {
+  @include themify($themes) {
+    min-height: 100vh;
+    width: 100%;
+    gap: 20px;
+    @include flex(unset, unset);
+    background-color: themed("bg1");
+    .main {
+      width: calc(100% - $width-siderbar-open);
+      @include mobile {
+        width: 100%;
+      }
+      &.hide {
+        width: calc(100% - $width-siderbar-close);
+        @include mobile {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+input,
+button {
+  background-color: unset;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn {
+  @include themify($themes) {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+    cursor: pointer;
+    @include flex(center, center);
+    &.btn-primary {
+      background-color: $color-primary;
+      color: $color-txt-d-1;
+      border: 2px solid $color-primary;
+
+      &:hover {
+        background-color: transparent;
+        color: $color-primary;
+      }
+    }
+    &.btn-tran {
+      background-color: transparent;
+      color: themed("text1");
+      border: 0.1rem solid themed("text1");
+
+      &:hover,
+      &.active {
+        background-color: themed("text1");
+        color: themed("bg1");
+      }
+    }
+    &.btn-white {
+      background-color: themed("text1");
+      border: 2px solid themed("text1");
+      color: themed("bg1");
+      &:hover {
+        background-color: transparent;
+        color: themed("text1");
+      }
+    }
+  }
+}
+
+.err {
+  @include themify($themes) {
+    background-color: $color-red;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 8px 0;
+    width: max-content;
+    p {
+      font-size: 16px;
+      color: $color-white;
+      font-weight: 600;
+    }
+  }
+}
+
+.dot {
+  @include themify($themes) {
+    width: 6px;
+    height: 6px;
+    background-color: themed('text2');
+    border-radius: 50%;
+    display: inline-block;
+  }
+}

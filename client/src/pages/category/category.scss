@@ -1,0 +1,24 @@
+@use "../../scss/" as *;
+
+.caterory {
+  width: 100%;
+  padding: 20px;
+  @include mobile{
+    padding: 20px 10px
+  }
+
+  @include themify($themes) {
+    .caterory_filter {
+      @include flex(center, unset);
+      flex-wrap: wrap;
+      button {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        &.active{
+          background-color: themed('text1');
+          color: theme('bg1');
+        }
+      }
+    }
+  }
+}

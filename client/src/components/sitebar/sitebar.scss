@@ -1,0 +1,67 @@
+@use '../../scss/' as *;
+
+.sitebar{
+    flex: 3;
+
+    h3{
+        font-size: 20px;
+    }
+    .avatar{
+        width: 300px;
+        height: 300px;
+        margin: 10px 0;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    p{
+        text-align: center;
+        font-size: 14px;
+        color: $color-grey2;
+    }
+
+    .categories{
+        margin-top: 10px;
+        h3{
+            font-size: 20px;
+            border-top: $boder;
+            text-align: center;
+            border-bottom: $boder;
+        }
+        .categories-list{
+            list-style: none;
+            color: $color-grey2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            .categories-item{
+                text-align: center;
+                padding: 10px 0;
+            }
+        }   
+    }
+
+    .social{
+        margin-top: 10px;
+        h3{
+            font-size: 20px;
+            border-top: $boder;
+            text-align: center;
+            border-bottom: $boder;
+        }
+        .social-list{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            .social-item{
+                margin: 0 10px;
+                a{
+                    color: $color-grey2;
+                    font-size:24px;
+                }
+            }
+        }
+    }
+}

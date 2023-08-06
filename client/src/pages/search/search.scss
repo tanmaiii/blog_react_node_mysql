@@ -1,0 +1,19 @@
+@use "../../scss/" as *;
+
+.search {
+  @include themify($themes) {
+    padding: 20px;
+    min-height: 100vh;
+    @include mobile{
+      padding: 20px 10px;
+    }
+    .search-title {
+      font-size: 16px;
+      color: themed('text1');
+    }
+    .search-body{
+        display: flex;
+        flex-wrap: wrap;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@use "../../scss/" as *;
+
+.modal-opacity {
+  @include themify($themes) {
+    background-color: rgba($color: themed("text1"), $alpha: 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    @include flex(center, center);
+    .modal {
+      background-color: themed("bg2");
+      color: themed("text1");
+      padding: 10px 20px;
+      width: 260px;
+      border-radius: 10px;
+      overflow: hidden;
+      .modal-body {
+        padding: 10px 0;
+        min-height: 60px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgba($color: themed('text1'), $alpha: 0.4);
+        p {
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+      .modal-control {
+        @include flex(center, end);
+        gap: 10px;
+        button {
+          color: $color-white;
+          padding: 8px;
+          min-width: 50px;
+          border-radius: 10px;
+          font-size: 16px;
+          font-weight: 600;
+          transition: all .3s;
+          &.close {
+            background-color: $color-red;
+          }
+
+          &.yes {
+            background-color: $color-primary;
+          }
+
+          &:hover{
+            scale: 0.94;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@use '../../scss/' as *;
+
+.author{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    min-height: 100vh;
+}

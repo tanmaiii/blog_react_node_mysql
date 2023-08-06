@@ -1,0 +1,84 @@
+@use "../../scss/" as *;
+
+.listCol {
+  @include themify($themes) {
+    flex: 3;
+    width: 100%;
+    position: relative;
+    @include mobile{
+      display: none;
+    }
+    @include tablet{
+      display: none;
+    }
+    .listCol_wrapper {
+      height: calc(100vh - $height-topbar);
+      position: sticky;
+      top: $height-topbar;
+      padding: 20px 0;
+      h4 {
+        color: themed("text1");
+        font-size: 18px;
+      }
+      .postCol {
+        height: 120px;
+        width: 100%;
+        margin-bottom: 10px;
+        overflow: hidden;
+        transition: all .3s;
+        &:hover{
+          background-color: themed('bg2');
+        }
+        .postCol_container {
+          display: flex;
+          overflow: hidden;
+          height: 100%;
+          width: 100%;
+          gap: 10px;
+          padding: 10px;
+          border-radius: 10px;
+          .postCol_img {
+            width: 40%;
+            border-radius: 10px;
+            overflow: hidden;
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+            }
+          }
+          .postCol_info {
+            color: themed("text1");
+            width: 60%;
+            &-top {
+              .postCol_info-category {
+                font-size: 10px;
+                color: $color-red;
+                font-weight: 500;
+                border-bottom: 1px solid $color-red;
+                width: max-content;
+                text-transform: uppercase;
+              }
+              .postCol_info-title {
+                @include text(2);
+                font-size: 16px;
+                font-weight: 500;
+                color: themed("text1");
+                cursor: pointer;
+              }
+            }
+            &-author {
+              @include flex(center, unset);
+              gap: 8px;
+              span {
+                font-size: 14px;
+                font-weight: 400;
+                color: themed("text2");
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

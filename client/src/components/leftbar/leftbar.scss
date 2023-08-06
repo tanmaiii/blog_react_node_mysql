@@ -1,0 +1,153 @@
+@use "../../scss/" as *;
+
+.leftbar {
+  @include themify($themes) {
+    width: $width-siderbar-open;
+    background-color: themed("bg1");
+    position: relative;
+    transition: all 0.5s;
+    @include mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      height: 100vh;
+      box-shadow: themed("bg1") 1.95px 1.95px 2.6px;
+      transform: translateX(-100%);
+      transition: all 0.3s;
+      &.openSidebar {
+        transform: translateX(0);
+      }
+    }
+    &.hide {
+      width: $width-siderbar-close;
+      .leftbar_container {
+        .leftbar_container-top {
+          hr {
+            display: block;
+            width: 80%;
+            margin: 0 auto;
+          }
+          .leftbar__item {
+            padding: 10px 20px;
+            h4 {
+              display: none;
+            }
+            ul {
+              a {
+                padding: 10px;
+                @include flex(center, center);
+                span {
+                  display: none;
+                }
+                i {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .leftbar_container {
+      position: sticky;
+      height: calc(100vh - $height-topbar);
+      top: $height-topbar;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 0;
+      @include mobile {
+        top: 0;
+        height: 100%;
+      }
+      hr {
+        display: none;
+      }
+      .leftbar_container-top {
+        .leftbar__item {
+          color: themed("text1");
+          padding: 10px 20px;
+          ul {
+            a {
+              margin: 10px 0;
+              padding: 10px;
+              border-radius: 10px;
+              transition: all 0.4s;
+              @include flex(center, unset);
+              text-decoration: none;
+              color: unset;
+              gap: 10px;
+              cursor: pointer;
+              &:hover {
+                background-color: themed("bg2");
+              }
+              &.active {
+                background-color: themed("bg2");
+              }
+              span {
+                display: block;
+                font-size: 16px;
+                font-weight: 500;
+                border-right: 3px solid transparent;
+                transition: all 0.4s;
+              }
+
+              i {
+                width: 24px;
+                @include flex(center, center);
+                font-size: 16px;
+                transition: all 0.4s;
+              }
+            }
+          }
+        }
+        & > * > h4 {
+          text-transform: uppercase;
+          font-size: 1rem;
+          color: themed("text2");
+        }
+      }
+
+      .leftbar_container-bottom {
+        padding: 10px 20px;
+        @include mobile{
+          display: none;
+        }
+        .leftbar_open {
+          padding: 10px;
+          line-height: 1;
+          border-radius: 10px;
+          @include flex(center, center);
+          transition: all 0.3s;
+          &.open {
+            padding: 10px;
+          }
+          i {
+            transition: all 0.3s;
+            width: 18px;
+            height: 18px;
+            font-size: 1.1rem;
+            color: themed("text1");
+            @include flex(center, center);
+          }
+          &:hover {
+            background-color: themed("bg2");
+          }
+        }
+      }
+
+      .btn_close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 28px;
+        color: themed("text1");
+        padding: 10px;
+        display: none;
+        @include mobile {
+          display: block;
+        }
+      }
+    }
+  }
+}

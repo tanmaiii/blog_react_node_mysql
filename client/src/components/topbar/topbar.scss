@@ -1,0 +1,125 @@
+@use "../../scss/" as *;
+
+.topbar {
+  @include themify($themes) {
+    width: 100%;
+    z-index: 100;
+    height: $height-topbar;
+    background-color: themed("bg1");
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid themed("border");
+
+    .topbar_container {
+      @include flex(center, space-between);
+      padding: 0 50px;
+      height: 100%;
+      color: themed("text1");
+
+      @include mobile {
+        padding: 0 10px;
+      }
+
+      .topbar_left {
+        .open-leftbar {
+          display: none;
+          color: $color-primary;
+          font-size: 20px;
+          margin-right: 10px;
+          @include mobile {
+            display: block;
+          }
+        }
+        @include flex(center, center);
+        a {
+          text-decoration: none;
+          @include flex(center, unset);
+          img {
+            height: 34px;
+            width: auto;
+            object-fit: cover;
+            margin-right: 6px;
+          }
+          h4 {
+            font-size: 24px;
+            font-weight: 800;
+            color: themed("primary");
+          }
+        }
+      }
+
+      .topbar_center {
+        .topbar_center-search {
+          background-color: themed("bg2");
+          padding: 8px 20px;
+          border-radius: 20px;
+          height: 100%;
+          @include flex(center, unset);
+          @include mobile {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            left: 0;
+            border-radius: 0;
+            transform: translateY(-100%);
+            opacity: 0;
+            display: none;
+            transition: all 0.3s;
+            &.active {
+              transform: translateY(0);
+              opacity: 1;
+              display: flex;
+            }
+          }
+          i {
+            font-size: 16px;
+            color: themed("text1");
+          }
+          input {
+            font-size: 16px;
+            color: themed("text1");
+            min-width: 300px;
+            margin-left: 10px;
+            @include mobile {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .topbar_right {
+        @include flex(center, center);
+        .btn-search {
+          padding: 10px 12px;
+          border-radius: 10px;
+          margin-right: 10px;
+          transition: all 0.3s;
+          display: none;
+          @include mobile{
+            display: block;
+          }
+          i {
+            line-height: 1;
+            font-size: 16px;
+            color: themed("text1");
+          }
+          &:hover {
+            background-color: themed("bg2");
+          }
+        }
+        .topbar_avt {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          overflow: hidden;
+          cursor: pointer;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
